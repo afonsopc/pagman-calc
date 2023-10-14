@@ -1,0 +1,266 @@
+/* Dark
+  --text-color: white;
+  --app-background: #242424;
+  --display-color: #3a3a3a;
+  --button-angle-arrow: url('data:image/svg+xml;utf8,<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg"><path d="m 13.996094 5 l -5.996094 6 l -6.003906 -6 z m 0 0" fill="white"/></svg>');
+  --button-titlebar-color-hover: #333333; 
+  --button-operator-color: #3a3a3a;
+  --button-operator-color-hover: #454545;
+  --button-digit-color: #454545;
+  --button-digit-color-hover: #585858;
+  --button-clear-color: #c01c28;
+  --button-clear-color-hover: #c6333d;
+  --button-equals-color: #3584e4;
+  --button-equals-color-hover: #4990e7;
+  --button-equals-text-color: white;
+*/
+
+/* Light
+--text-color: #323232;
+--app-background: #fafafa;
+--display-color: #e6e6e6;
+--button-angle-arrow: url('data:image/svg+xml;utf8,<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg"><path d="m 13.996094 5 l -5.996094 6 l -6.003906 -6 z m 0 0" fill="rgb(50, 50, 50)"/></svg>');
+--button-titlebar-color-hover: #ececec; 
+--button-operator-color: #e6e6e6;
+--button-operator-color-hover: #dcdcdc;
+--button-digit-color: #e6e6e6;
+--button-digit-color-hover: #cacaca;
+--button-clear-color: #e01b24;
+--button-clear-color-hover: #e3323a;
+--button-equals-color: #3584e4;
+--button-equals-color-hover: #4990e7;
+--button-equals-text-color: white;
+*/
+
+@font-face {
+  font-family: "Cantarell";
+  src: url("./fonts/Cantarell-VF.woff2") format("woff2"),
+    url("./fonts/Cantarell-VF.otf") format("opentype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+*, *::after, *::before {
+  --animation-delay: 0.2s;
+  box-sizing: border-box;
+  -moz-transition: all var(--animation-delay) ease-in-out;
+  -webkit-transition: all var(--animation-delay) ease-in-out;
+  -moz-transition: all var(--animation-delay) ease-in-out;
+  -o-transition: all var(--animation-delay) ease-in-out;
+  transition: all var(--animation-delay) ease-in-out;
+  font-family: "Cantarell";
+}
+
+body {
+  margin: 0;
+  background-color: #6a5050;
+}
+
+.App {
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  --text-color: #ffffff;
+  --app-border: #333333;
+  --app-background: #242424;
+  --display-color: #3a3a3a;
+  --button-angle-arrow-light: url('data:image/svg+xml;utf8,<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg"><path d="m 13.996094 5 l -5.996094 6 l -6.003906 -6 z m 0 0" fill="rgb(50, 50, 50)"/></svg>');
+  --button-angle-arrow-dark: url('data:image/svg+xml;utf8,<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg"><path d="m 13.996094 5 l -5.996094 6 l -6.003906 -6 z m 0 0" fill="rgb(255, 255, 255)"/></svg>');
+  --button-angle-arrow: var(--button-angle-arrow-dark);
+  --button-titlebar-color-hover: #333333; 
+  --button-operator-color: #3a3a3a;
+  --button-operator-color-hover: #454545;
+  --button-digit-color: #454545;
+  --button-digit-color-hover: #717171;
+  --button-clear-color: #c01c28;
+  --button-clear-color-hover: #c6333d;
+  --button-equals-color: #3584e4;
+  --button-equals-color-hover: #4990e7;
+  --button-equals-text-color: white;
+  font-size: 2vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: solid 0.05em var(--app-border);
+  height: 20em;
+  width: 15em;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 470px) {
+  .calculator {
+    font-size: 6vw;
+  }
+}
+@media screen and (max-width: 134px) {
+  .App, .calculator {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+  }
+  .calculator {
+    font-size: 6vw;
+  }
+}
+
+.titlebar {
+  display: inline-flex;
+  height: 10%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--app-background);
+  justify-content: space-between;
+}
+
+.titlebar > h1 {
+  margin-top: 0.35em;
+  margin-right: 35%;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.angleselect {
+  background-color: transparent;
+  margin: 0.50em;
+  padding: 0.4em;
+  padding-top: 0.35em;
+  padding-right: 1.4em;
+  height: 2em;
+  border: none;
+  color: var(--text-color);
+  font-weight: bolder;
+  font-size: 0.65em;
+  border-radius: 0.35em;
+  /* Replace default arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: var(--button-angle-arrow);
+  background-position: right 0.26em top 50%;
+  background-repeat: no-repeat;
+  background-size: 15%;
+}
+
+
+.angleselect:hover, .angleselect:active, .angleselect:focus {
+  background-color: var(--button-titlebar-color-hover);
+}
+
+.themebutton {
+  background-color: transparent;
+  margin: 0.50em;
+  padding: 0.4em 0.7em;
+  border: none;
+  color: var(--text-color);
+  font-weight: bolder;
+  font-size: 0.65em;
+  border-radius: 0.35em;
+}
+
+
+.themebutton:hover, .themebutton:active, .themebutton:focus-visible {
+  background-color: var(--button-titlebar-color-hover);
+}
+
+.display {
+  display: grid;
+  height: 20%;
+  background-color: var(--display-color);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  row-gap: 15em;
+}
+.display > * {
+  background-color: transparent;
+  color: var(--text-color);
+  font-weight: bolder;
+  font-size: 1.5em;
+  border: none;
+  height: 2.7em;
+  width: 100%;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.display > .fakeDisplay {
+  visibility: hidden;
+}
+
+.display .inputDisplay:focus-visible {
+  outline: none;
+}
+
+.buttons {
+  height: 70%;
+  display: grid;
+  background-color: var(--app-background);
+  padding: 0.2em;
+  overflow: hidden;
+}
+
+.buttons > ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.buttons > ul > li {
+  display: flex;
+  flex: 1 1 0%;
+  margin: 0;
+  padding: 0.1em;
+  overflow: hidden;
+}
+
+.buttons > ul > li > button {
+  appearance: none;
+  border: none;
+  outline: none;
+  margin: 0;
+  font-size: 0.9em;
+  text-align: center;
+  font-weight: bolder;
+  width: 100%;
+  color: var(--text-color);
+  border-radius: 0.3em;
+}
+
+.operator {
+  background-color: var(--button-operator-color);
+}
+
+.operator:hover {
+  background-color: var(--button-operator-color-hover);
+}
+
+.digit {
+  background-color: var(--button-digit-color);
+}
+
+.digit:hover {
+  background-color: var(--button-digit-color-hover);
+}
+
+.clear {
+  background-color: var(--button-clear-color);
+}
+
+.clear:hover {
+  background-color: var(--button-clear-color-hover);
+}
+
+.equals {
+  background-color: var(--button-equals-color);
+  color: var(--button-equals-text-color)!important;
+}
+
+.equals:hover {
+  background-color: var(--button-equals-color-hover);
+}
